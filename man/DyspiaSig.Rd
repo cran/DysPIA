@@ -2,7 +2,7 @@
 % Please edit documentation in R/DyspiaSig.R
 \name{DyspiaSig}
 \alias{DyspiaSig}
-\title{Returns the significant summary of DysPIA results.}
+\title{DyspiaSig}
 \usage{
 DyspiaSig(DyspiaRes, fdr)
 }

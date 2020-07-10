@@ -2,8 +2,7 @@
 % Please edit documentation in R/DysPIA.R
 \name{DysPIA}
 \alias{DysPIA}
-\title{Runs Dysregulated Pathway Identification Analysis (DysPIA).
-The package 'DysPIAData' including the background data is needed to be loaded.}
+\title{DysPIA: Dysregulated Pathway Identification Analysis}
 \usage{
 DysPIA(
   pathwayDB = "kegg",
@@ -55,8 +54,7 @@ The columns are the following:
 }
 }
 \description{
-Runs Dysregulated Pathway Identification Analysis (DysPIA).
-The package 'DysPIAData' including the background data is needed to be loaded.
+Runs Dysregulated Pathway Identification Analysis (DysPIA).The package 'DysPIAData' including the background data is needed to be loaded.
 }
 \examples{
 data(pathway_list,package="DysPIAData")

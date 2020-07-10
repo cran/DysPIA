@@ -1,4 +1,5 @@
-#' Returns the significant summary of DysPIA results.
+#' @title DyspiaSig
+#' @description Returns the significant summary of DysPIA results.
 #'
 #' @param DyspiaRes Table with results of running DysPIA().
 #' @param fdr Significant threshold of `padj` (a BH-adjusted p-value).

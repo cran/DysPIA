@@ -2,7 +2,7 @@
 % Please edit documentation in R/DysPIA.R
 \name{setUpBPPARAM}
 \alias{setUpBPPARAM}
-\title{Sets up parameter BPPARAM value.}
+\title{setUpBPPARAM}
 \usage{
 setUpBPPARAM(nproc = 0, BPPARAM = NULL)
 }

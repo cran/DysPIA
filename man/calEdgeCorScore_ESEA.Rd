@@ -2,14 +2,14 @@
 % Please edit documentation in R/calEdgeCorScore_ESEA.R
 \name{calEdgeCorScore_ESEA}
 \alias{calEdgeCorScore_ESEA}
-\title{Calculates differential Mutual information.}
+\title{calEdgeCorScore_ESE}
 \usage{
 calEdgeCorScore_ESEA(
   dataset,
   class.labels,
   controlcharacter,
   casecharacter,
-  edgesbackground
+  background
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ calEdgeCorScore_ESEA(
 
 \item{casecharacter}{Charactor of case in the class labels.}
 
-\item{edgesbackground}{Matrix of the edges' background.}
+\item{background}{Matrix of the edges' background.}
 }
 \value{
 A vector of the aberrant correlation in phenotype P based on mutual information (MI) for each edge.

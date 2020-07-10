@@ -1,7 +1,7 @@
-#' Runs Dysregulated Pathway Identification Analysis (DysPIA).
-#' The package 'DysPIAData' including the background data is needed to be loaded.
+#' @title DysPIA: Dysregulated Pathway Identification Analysis
 #' 
-#'
+#' @description Runs Dysregulated Pathway Identification Analysis (DysPIA).The package 'DysPIAData' including the background data is needed to be loaded.
+#' 
 #' @param pathwayDB Name of the pathway database (8 databases:reactome,kegg,biocarta,panther,pathbank,nci,smpdb,pharmgkb). 
 #'                  The default value is "kegg".
 #' @param stats Named vector of CILP scores for each gene pair. Names should be the same as in pathways.
@@ -34,10 +34,10 @@
 #' @useDynLib DysPIA, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @exportPattern "^[[:alpha:]]+"
-#' @import data.table
-#' @import BiocParallel
-#' @import fastmatch
-#' @import stats
+#' @importFrom data.table data.table rbindlist setcolorder :=
+#' @importFrom BiocParallel bpparam bplapply
+#' @importFrom fastmatch fmatch
+#' @importFrom stats na.omit
 #' @import DysPIAData
 #' @examples
 #' data(pathway_list,package="DysPIAData")
@@ -153,8 +153,8 @@ DysPIA <- function(pathwayDB="kegg", stats,
     pvals
 }
 
-
-#' Calculates DysPIA statistics for a given query gene pair set.
+#' @title calcDyspiaStat: Calculates DysPIA statistics
+#' @description Calculates DysPIA statistics for a given query gene pair set.
 #'
 #' @param stats Named numeric vector with gene pair-level statistics sorted in decreasing order (order is not checked).
 #' @param selectedStats Indexes of selected gene pairs in the `stats` array.
@@ -237,9 +237,10 @@ calcDyspiaStat <- function(stats, selectedStats, DyspiaParam=1,
     res
 }
 
-
-#' Runs dysregulated pathway identification analysis for preprocessed input data.
+#' @title DyspiaSimpleImpl
+#' @description Runs dysregulated pathway identification analysis for preprocessed input data.
 #'
+#' @importFrom stats p.adjust
 #' @param pathwayScores Vector with enrichment scores for the pathways in the database.
 #' @param pathwaysSizes Vector of pathway sizes.
 #' @param pathwaysFiltered Filtered pathways.
@@ -351,13 +352,14 @@ DyspiaSimpleImpl <- function(pathwayScores, pathwaysSizes, pathwaysFiltered,
     pvals
 }
 
-
-#' Sets up parameter BPPARAM value.
+#' @title setUpBPPARAM
+#' @description Sets up parameter BPPARAM value.
 #'
 #' @param nproc If not equal to zero sets BPPARAM to use nproc workers (default = 0).
 #' @param BPPARAM Parallelization parameter used in bplapply.
 #'  Can be used to specify cluster to run. If not initialized explicitly or
 #'  by setting `nproc` default value `bpparam()` is used.
+#' @importFrom BiocParallel SnowParam MulticoreParam
 #' @return parameter BPPARAM value
 #' 
 setUpBPPARAM <- function(nproc=0, BPPARAM=NULL){

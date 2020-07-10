@@ -2,7 +2,7 @@
 % Please edit documentation in R/DysPIA.R
 \name{DyspiaSimpleImpl}
 \alias{DyspiaSimpleImpl}
-\title{Runs dysregulated pathway identification analysis for preprocessed input data.}
+\title{DyspiaSimpleImpl}
 \usage{
 DyspiaSimpleImpl(
   pathwayScores,

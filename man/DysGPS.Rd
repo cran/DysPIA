@@ -2,14 +2,14 @@
 % Please edit documentation in R/DysGPS.R
 \name{DysGPS}
 \alias{DysGPS}
-\title{Calculates Dysregulated gene pair score (DysGPS) for each gene pair.}
+\title{DysGPS: Calculates Dysregulated gene pair score (DysGPS) for each gene pair}
 \usage{
 DysGPS(
   dataset,
   class.labels,
   controlcharacter,
   casecharacter,
-  edgesbackground = combined_background
+  background = combined_background
 )
 }
 \arguments{
@@ -21,14 +21,14 @@ DysGPS(
 
 \item{casecharacter}{Charactor of case group in the class labels.}
 
-\item{edgesbackground}{Matrix of the gene pairs' background. The default is `combined_background`,
+\item{background}{Matrix of the gene pairs' background. The default is `combined_background`,
 which includes real pathway gene pairs and randomly producted gene pairs. The 'combined_background' was incluede in 'DysPIAData'.}
 }
 \value{
 A vector of DysGPS for each gene pair.
 }
 \description{
-two-sample Welch's T test of gene pairs between case and control samples. The package 'DysPIAData' including the background data is needed to be loaded.
+Calculates Dysregulated gene pair score (DysGPS) for each gene pair. Two-sample Welch's T test of gene pairs between case and control samples. The package 'DysPIAData' including the background data is needed to be loaded.
 }
 \examples{
 data(gene_expression_p53, class.labels_p53,sample_background)

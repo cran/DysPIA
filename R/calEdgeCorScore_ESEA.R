@@ -1,19 +1,21 @@
-#' Calculates differential Mutual information.
+#' @title calEdgeCorScore_ESE
+#' @description Calculates differential Mutual information.
 #'
 #' @param dataset Matrix of gene expression values (rownames are genes, columnnames are samples).
 #' @param class.labels Vector of binary labels.
 #' @param controlcharacter Charactor of control in the class labels.
 #' @param casecharacter Charactor of case in the class labels.
-#' @param edgesbackground Matrix of the edges' background.
+#' @param background Matrix of the edges' background.
 #' @return A vector of the aberrant correlation in phenotype P based on mutual information (MI) for each edge.
-#' @import parmigene
+#' @importFrom parmigene knnmi
+#' @importFrom stats na.omit var
 #' @import DysPIAData
 #' @examples
 #' data(gene_expression_p53, class.labels_p53,sample_background)
 #' ESEAscore_p53<-calEdgeCorScore_ESEA(gene_expression_p53, class.labels_p53,
 #'  "WT", "MUT", sample_background)
 #' 
-calEdgeCorScore_ESEA <- function(dataset, class.labels, controlcharacter, casecharacter, edgesbackground) {
+calEdgeCorScore_ESEA <- function(dataset, class.labels, controlcharacter, casecharacter, background) {
 
   controlloca<-which(class.labels==controlcharacter)
   caseloca<-which(class.labels==casecharacter)
@@ -24,9 +26,9 @@ calEdgeCorScore_ESEA <- function(dataset, class.labels, controlcharacter, casech
   data_var<-apply(dataset,1,var)*apply(contrSet,1,var)
   if (sum(data_var==0)>0){dataset<-dataset[-which(data_var==0),]}
   
-location<-matrix(0,length(edgesbackground[,1]),2)
-location[,1]<-match(edgesbackground[,1],rownames(dataset))
-location[,2]<-match(edgesbackground[,2],rownames(dataset))
+location<-matrix(0,length(background[,1]),2)
+location[,1]<-match(background[,1],rownames(dataset))
+location[,2]<-match(background[,2],rownames(dataset))
 location<-na.omit(location)
 
 dataset.1<-dataset[location[,1],]

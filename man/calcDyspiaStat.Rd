@@ -2,7 +2,7 @@
 % Please edit documentation in R/DysPIA.R
 \name{calcDyspiaStat}
 \alias{calcDyspiaStat}
-\title{Calculates DysPIA statistics for a given query gene pair set.}
+\title{calcDyspiaStat: Calculates DysPIA statistics}
 \usage{
 calcDyspiaStat(
   stats,
